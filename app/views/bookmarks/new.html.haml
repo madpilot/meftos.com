@@ -1,0 +1,13 @@
+= error_messages_for :bookmark
+
+- form_tag metadata_bookmarks_path do
+  %fieldset
+    %legend Add a bookmark
+
+    %label
+      %span.text_label URL
+      = text_field 'bookmark', 'url'
+
+  %fieldset.buttons.wizard
+    %button{ :type => 'submit', :class => 'next' } Next &raquo;
+

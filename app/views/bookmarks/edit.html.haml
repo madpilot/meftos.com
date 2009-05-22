@@ -1,0 +1,10 @@
+= error_messages_for :bookmark
+
+- form_tag bookmark_path(@bookmark), :method => :put do
+  %fieldset
+    %legend Update a bookmark
+
+    = render :partial => 'bookmarks/form'
+  
+  %fieldset.buttons.wizard
+    %button{ :type => 'submit' } Update

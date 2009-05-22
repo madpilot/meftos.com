@@ -1,0 +1,12 @@
+= error_messages_for :shorten
+
+- form_tag urls_path do
+  %fieldset
+    %legend Shorten a URL
+
+    %label
+      %span.text_label URL
+      = text_field 'shorten', 'url'
+
+  %fieldset.buttons
+    %button{ :type =>'submit' } Shorten

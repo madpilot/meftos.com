@@ -1,0 +1,10 @@
+%p 
+  Are you sure you want to delete
+  %em 
+    = link_to(@bookmark.title, @bookmark.url) + "?"
+
+= form_tag bookmark_path(@bookmark), :method => :delete do
+  %fieldset.buttons
+    %button{ :type => 'submit' } Yes
+    or
+    = link_to 'No', bookmarks_path

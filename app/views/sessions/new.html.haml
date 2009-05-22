@@ -1,0 +1,19 @@
+- form_tag session_path do
+  %fieldset
+    %legend
+      Login
+
+    %label
+      %span.text_label Username
+      = text_field_tag 'login', @login
+
+    %label
+      %span.text_label Password
+      = password_field_tag 'password', nil
+
+    %fieldset.radio_group
+      = label_tag 'remember_me', 'Remember me'
+      = check_box_tag 'remember_me', '1', @remember_me
+
+    %fieldset.buttons
+      %button{ :type => 'submit' }Login

@@ -1,0 +1,9 @@
+%h1 URL shortened!
+%p
+  The URL
+  %strong
+    = link_to @shorten.url, @shorten.url
+    has been shortened to
+    = link_to request.url.gsub!(url_for(), "").split("?").first + "/" + @shorten.permalink, '/' + @shorten.permalink
+%div
+  = link_to 'Shorten another URL', new_url_path
