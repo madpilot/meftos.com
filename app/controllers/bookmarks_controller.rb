@@ -22,6 +22,17 @@ class BookmarksController < ApplicationController
           @bookmarks = Bookmark.find :all
         end
       end
+      format.json do
+        count = params[:count] || 50
+        @bookmarks = Bookmark.find :all, :limit => count
+        render :json => @bookmarks.to_json
+      end
+      format.js do
+        count = params[:count] || 50
+        @bookmarks = Bookmark.find :all, :limit => count
+        render :text => "if(typeof(MEftos) == 'undefined') MEftos = {}; MEftos.bookmarks = " + @bookmarks.to_json + ";"
+      end
+
       format.html do
         if params[:tag]
           # Eww. This is gross
