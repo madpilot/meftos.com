@@ -36,7 +36,7 @@ class BookmarksController < ApplicationController
       format.html do
         if params[:tag]
           # Eww. This is gross
-          @bookmarks = Bookmark.paginate :page => params[:page], :conditions => 'id IN (' + Bookmark.find_tagged_with(params[:tag], :order => 'created_at DESC').map(&:id).join(',') + ')'
+          @bookmarks = Bookmark.paginate :page => params[:page], :conditions => 'id IN (' + Bookmark.find_tagged_with(params[:tag]).map(&:id).join(',') + ')', :order => 'created_at DESC'
           @tag = params[:tag]
         else
           @bookmarks = Bookmark.paginate :page => params[:page], :order => 'created_at DESC'
