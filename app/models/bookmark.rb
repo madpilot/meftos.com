@@ -2,6 +2,9 @@ require 'nokogiri'
 require 'open-uri'
 
 class Bookmark < ActiveRecord::Base
+  cattr_reader :per_page
+  @@per_page = 100
+
   acts_as_taggable_on :tags
   
   validates_format_of :url, :with => /.+:\/\/.+/

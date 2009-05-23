@@ -280,6 +280,20 @@ div#content li div.description {
   line-height: 2em;
 }
 
+div#main-content {
+  width: 75%;
+}
+
+div#sub-content {
+  width: 25%;
+  float: right;
+  font-size: 90%;
+}
+
+div#sub-content h2 {
+  color: #787878;
+}
+
 div#footer {
 
   margin-top: 1em;
@@ -292,12 +306,24 @@ div#footer a {
   color: #ddd;
 }
 
-ul.paging {
+div.pagination {
   text-align: center;
 }
 
-ul.paging li {
-  display: inline;
-  padding: 1em 2em;
+div.pagination span, div.pagination a {
+  padding: 1em 1em;
   border: 1px solid #DDDDDD;
+}
+
+div.pagination a:hover {
+  background-color: #DDDDDD;
+}
+
+div.tag-cloud {
+  text-align: justify;
+  line-height: 1.5em;
+}
+
+div.tag-cloud a {
+  margin-right: 1em;
 }
