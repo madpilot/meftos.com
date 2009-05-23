@@ -1,13 +1,10 @@
 == meftos.com - Rails based URL shortener and centralised bookmark system
 
-URL Shorteners are really useful for sending URLs via email or via twitter or SMS or whatever. However,
-one of the critisms is that is if one of the major services such as tinyURL shuts down, a hell of a lot
-of links will break.
+URL Shorteners are really useful for sending URLs via email or via twitter or SMS or whatever. However, one of the critisms is that is if one of the major services such as tinyURL shuts down, a hell of a lot of links will break.
 
 Whilst running your own URL shortener won't stop shortened URLs from disappearing, it will reduced the impact.
 
-I've also bundled in delicious style bookmarking, just because I prefer being in charge of my bookmarks - just in case
-if another magnolia :)
+I've also bundled in delicious style bookmarking, just because I prefer being in charge of my bookmarks - just in case we have another magnolia :)
 
 == Features
 
@@ -18,9 +15,7 @@ if another magnolia :)
 
 == Getting Started
 
-1. It's a Rails 2.3.2 app, which requires haml, acts_as_taggable_on, nokogiri and will_paginate. These are in the environment.rb
-file so running rake gems:install should sort that out.
-2. I've disabled the user regsitration system, as this is intended for single user use. To create a user, fire up script/console and create
-a user manually. Something like this should sort you out (changing the default values)
+1. It's a Rails 2.3.2 app, which requires haml, acts_as_taggable_on, nokogiri and will_paginate. These are in the environment.rb file so running rake gems:install should sort that out.
+2. I've disabled the user regsitration system, as this is intended for single user use. To create a user, fire up script/console and create a user manually. Something like this should sort you out (changing the default values)
 
 User.create(:login => "username", :email => 'you@email.com', :password => 'top_secret', :password_confirmation => 'top_secret')
