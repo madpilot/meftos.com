@@ -1,14 +1,8 @@
 #sub-content
   %h2 Tags
   %div.tag-cloud
-<<<<<<< HEAD:app/views/bookmarks/index.html.haml
     - tag_cloud Bookmark.tag_counts, %w(level_1 level_2 level_3 level_4 level_5) do |tag, css_class|
       = link_to tag.name, { :tag => tag.name }, { :class => css_class, :title => (tag.name + " (" + tag.count.to_s + ")") }
-=======
-    - tag_cloud Tag.find(:all), %w(tag_1 tag_2 tag_3 tag_4 tag_5) do |tag, css_class|
-      = link_to tag.name, { :tag => tag.name }, :class => css_class
->>>>>>> 9d41d6678d537419aadac17fa970633279ed7116:app/views/bookmarks/index.html.haml
-
 #main-content
   - if @bookmarks.empty?
     %p There are no saved bookmarks
