@@ -4,7 +4,7 @@
     <p>No tags</p>
   - else
     %div.tag-cloud
-      - tag_cloud Bookmark.tag_counts, %w(level_1 level_2 level_3 level_4 level_5) do |tag, css_class|
+      - tag_cloud Bookmark.tag_counts.sort { |x, y| x.name <=> y.name }, %w(level_1 level_2 level_3 level_4 level_5) do |tag, css_class|
         = link_to tag.name, { :tag => tag.name }, { :class => css_class, :title => (tag.name + " (" + tag.count.to_s + ")") }
 #main-content
   - if @bookmarks.empty?

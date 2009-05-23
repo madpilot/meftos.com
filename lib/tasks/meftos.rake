@@ -2,7 +2,7 @@ namespace :meftos do
   desc "Import del.icio.us bookmarks from a local html page"
   task :import => :environment do
     html = ''
-    File.open('/var/www/meftos.com/cache/import.html', "r") do |f|
+    File.open('/var/www/meftos.com/import.html', "r") do |f|
       while (line = f.gets)
         html << line
       end
