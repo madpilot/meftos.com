@@ -3,15 +3,37 @@ class BookmarksController < ApplicationController
   before_filter :login_required, :except => [ 'index' ]
   
   def index
-    if params[:tag]
-      # Eww. This is gross
-      @bookmarks = Bookmark.paginate :page => params[:page], :conditions => 'id IN (' + Bookmark.find_tagged_with(params[:tag], :order => 'created_at DESC').map(&:id).join(',') + ')'
-      @tag = params[:tag]
-    else
-      @bookmarks = Bookmark.paginate :page => params[:page], :order => 'created_at DESC'
-    end
+    respond_to do |format|
+      format.atom do
+        if since = request.if_modified_since
+          @bookmarks = Bookmark.find :all, :conditions => [ 'created_at > ?', since ]
+          render :nothing => true, :status => 304 if @bookmarks.empty?
+          return true
+        else
+          @bookmarks = Bookmark.find :all
+        end
+      end
+      format.rss do
+        if since = request.if_modified_since
+          @bookmarks = Bookmark.find :all, :conditions => [ 'created_at > ?', since ]
+          render :nothing => true, :status => 304 if @bookmarks.empty?
+          return true
+        else
+          @bookmarks = Bookmark.find :all
+        end
+      end
+      format.html do
+        if params[:tag]
+          # Eww. This is gross
+          @bookmarks = Bookmark.paginate :page => params[:page], :conditions => 'id IN (' + Bookmark.find_tagged_with(params[:tag], :order => 'created_at DESC').map(&:id).join(',') + ')'
+          @tag = params[:tag]
+        else
+          @bookmarks = Bookmark.paginate :page => params[:page], :order => 'created_at DESC'
+        end
 
-    @page_title = "Bookmarks"
+        @page_title = "Bookmarks"
+      end
+    end
   end
 
   def new
@@ -19,6 +41,7 @@ class BookmarksController < ApplicationController
   end
 
   def metadata
+    params[:bookmark] =  { :url => params[:url] } if params[:url]
     @bookmark = Bookmark.new(params[:bookmark])
     @bookmark.fetch_metadata
 

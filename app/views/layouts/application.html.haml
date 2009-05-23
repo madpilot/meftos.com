@@ -6,6 +6,9 @@
       = "meftos.com#{@page_title ? ": " + @page_title : ""}"
     = stylesheet_link_tag "reset"
     = stylesheet_link_tag "application"
+    %link{ :rel => 'alternate', :type => 'application/atom+xml', :title => 'Atom', :href => url_for(:controller => 'bookmarks', :format => 'atom', :only_path => false) }
+    %link{ :rel => 'alternate', :type => 'application/rss+xml', :title => 'RSS 2.0', :href => url_for(:controller => 'bookmarks', :format => 'rss', :only_path => false) }
+    
   %body
     #container
       #global-navigation
