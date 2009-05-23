@@ -156,6 +156,7 @@ fieldset.checkbox_group span.text_label, fieldset.radio_group span.text_label {
   display: inline;
   font-weight: normal;
   float: none;
+  vertical-align: text-top;
 }
 
 fieldset.buttons {
@@ -326,4 +327,32 @@ div.tag-cloud {
 
 div.tag-cloud a {
   margin-right: 1em;
+}
+
+div.tag-cloud a.level_1 {
+  
+}
+
+div.tag-cloud a.level_1 {
+  
+}
+
+div.tag-cloud a.level_3 {
+  color: #8388ec;  
+}
+
+div.tag-cloud a.level_1 {
+  
+}
+
+div.tag-cloud a.level_1 {
+  
+}
+
+ul.breadcrumbs {
+  margin-bottom: 1em;
+}
+
+ul.breadcrumbs li {
+  display: inline;
 }

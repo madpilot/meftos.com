@@ -6,9 +6,11 @@ class BookmarksController < ApplicationController
     if params[:tag]
       # Eww. This is gross
       @bookmarks = Bookmark.paginate :page => params[:page], :conditions => 'id IN (' + Bookmark.find_tagged_with(params[:tag], :order => 'created_at DESC').map(&:id).join(',') + ')'
+      @tag = params[:tag]
     else
       @bookmarks = Bookmark.paginate :page => params[:page], :order => 'created_at DESC'
     end
+
     @page_title = "Bookmarks"
   end
 
