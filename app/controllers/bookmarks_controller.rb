@@ -6,30 +6,30 @@ class BookmarksController < ApplicationController
     respond_to do |format|
       format.atom do
         if since = request.if_modified_since
-          @bookmarks = Bookmark.find :all, :conditions => [ 'created_at > ?', since ]
+          @bookmarks = Bookmark.find :all, :conditions => [ 'created_at > ?', since ], :order => 'created_at DESC'
           render :nothing => true, :status => 304 if @bookmarks.empty?
           return true
         else
-          @bookmarks = Bookmark.find :all
+          @bookmarks = Bookmark.find :all, :order => 'created_at DESC'
         end
       end
       format.rss do
         if since = request.if_modified_since
-          @bookmarks = Bookmark.find :all, :conditions => [ 'created_at > ?', since ]
+          @bookmarks = Bookmark.find :all, :conditions => [ 'created_at > ?', since ], :order => 'created_at DESC'
           render :nothing => true, :status => 304 if @bookmarks.empty?
           return true
         else
-          @bookmarks = Bookmark.find :all
+          @bookmarks = Bookmark.find :all, :order => 'created_at DESC'
         end
       end
       format.json do
         count = params[:count] || 50
-        @bookmarks = Bookmark.find :all, :limit => count
+        @bookmarks = Bookmark.find :all, :limit => count, :order => 'created_at DESC'
         render :json => @bookmarks.to_json
       end
       format.js do
         count = params[:count] || 50
-        @bookmarks = Bookmark.find :all, :limit => count
+        @bookmarks = Bookmark.find :all, :limit => count, :order => 'created_at DESC'
         render :text => "if(typeof(MEftos) == 'undefined') MEftos = {}; MEftos.bookmarks = " + @bookmarks.to_json + ";"
       end
 
