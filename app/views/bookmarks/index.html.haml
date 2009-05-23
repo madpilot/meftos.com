@@ -1,26 +1,30 @@
-- if @bookmarks.empty?
-  %p There are no saved bookmarks
-- else
-  %ul.bookmarks
-    - @bookmarks.each do |bookmark|
-      %li
-        %div.toolbox
-          %div.date
-            = bookmark.created_at.strftime("%d %b %Y")
-          - if logged_in?
-            = link_to 'Edit', edit_bookmark_path(bookmark)
-            |
-            = link_to 'Delete', delete_bookmark_path(bookmark)
-        %h2
-          = link_to h(bookmark.title), bookmark.url
-        - if bookmark.description
-          %div.description
-            =h bookmark.description
-        %div.tags
-          - bookmark.tags.each do |tag|
-            = link_to tag.name, { :tag => tag.name }
+#sub-content
+  %h2 Tags
+  %div.tag-cloud
+    - tag_cloud Tag.find(:all), %w(tag_1 tag_2 tag_3 tag_4 tag_5) do |tag, css_class|
+      = link_to tag.name, { :tag => tag.name }, :class => css_class
 
-= will_paginate @bookmarks
+#main-content
+  - if @bookmarks.empty?
+    %p There are no saved bookmarks
+  - else
+    %ul.bookmarks
+      - @bookmarks.each do |bookmark|
+        %li
+          %div.toolbox
+            %div.date
+              = bookmark.created_at.strftime("%d %b %Y")
+            - if logged_in?
+              = link_to 'Edit', edit_bookmark_path(bookmark)
+              |
+              = link_to 'Delete', delete_bookmark_path(bookmark)
+          %h2
+            = link_to h(bookmark.title), bookmark.url
+          - if bookmark.description
+            %div.description
+              =h bookmark.description
+          %div.tags
+            - bookmark.tags.each do |tag|
+              = link_to tag.name, { :tag => tag.name }
 
-- tag_cloud Tag.find(:all), %w(tag_1 tag_2 tag_3 tag_4 tag_5) do |tag, css_class|
-  = link_to tag.name, { :tag => tag.name }, :class => css_class
+  = will_paginate @bookmarks
