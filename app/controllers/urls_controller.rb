@@ -7,7 +7,7 @@ class UrlsController < ApplicationController
 
   def show
     url = Url.find(params[:permalink].to_i(36))
-    redirect_to url.url
+    redirect_to url.url, :status => :moved_permanently
   end
 
   def new

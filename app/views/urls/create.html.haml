@@ -4,6 +4,7 @@
   %strong
     = link_to @shorten.url, @shorten.url
     has been shortened to
-    = link_to request.url.gsub!(url_for(), "").split("?").first + "/" + @shorten.permalink, '/' + @shorten.permalink
+    = link_to url_for(:controller => 'urls', :action => 'show', :permalink => @shorten.permalink, :only_path => false), url_for(:controller => 'urls', :action => 'show', :permalink => @shorten.permalink, :only_path => false)
+
 %div
   = link_to 'Shorten another URL', new_url_path
