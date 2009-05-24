@@ -1,3 +1,3 @@
-mbleigh-acts-as-taggable-on --source 'http://gems.github.com' --lib 'acts-as-taggable-on'
-nokogiri --version '1.2.3'
-mislav-will_paginate --version '~> 2.3.8' --lib 'will_paginate' --source 'http://gems.github.com'
+mbleigh-acts-as-taggable-on --source='http://gems.github.com' 
+nokogiri --version='1.2.3'
+mislav-will_paginate --version='~> 2.3.8' --source='http://gems.github.com'
