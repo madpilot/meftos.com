@@ -19,4 +19,4 @@ I've also bundled in delicious style bookmarking, just because I prefer being in
 2. Run the following rake task: rake auth:gen:site_key
 3. I've disabled the user regsitration system, as this is intended for single user use. To create a user, fire up script/console and create a user manually. Something like this should sort you out (changing the default values)
 
-User.create(:login => "username", :email => 'you@email.com', :password => 'top_secret', :password_confirmation => 'top_secret')
+User.create!(:login => "username", :email => 'you@email.com', :password => 'top_secret', :password_confirmation => 'top_secret')
