@@ -4,3 +4,5 @@ db/schema.sql
 config/database.yml
 log/*
 config/initializers/site_keys.rb
+public/stylesheets/*.css
+public/stylesheets/.sass-cache/
