@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.bookmarklets '/bookmarklets', :controller => 'pages', :action => 'bookmarklets'
   
   map.connect 'bookmarks/save', :controller => 'bookmarks', :action => 'metadata'
+  map.connect 'urls/save', :controller => 'urls', :action => 'create'
   
   map.resource :session
   map.resources :urls
