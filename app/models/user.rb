@@ -47,6 +47,10 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
 
+  def remember_me
+    remember_me_for 1000.years
+  end
+
   protected
     
 
