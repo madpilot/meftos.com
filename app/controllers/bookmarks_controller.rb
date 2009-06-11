@@ -1,6 +1,7 @@
 class BookmarksController < ApplicationController
   include AuthenticatedSystem
   before_filter :login_required, :except => [ 'index' ]
+  layout proc { |c| c.params[:popup] == '1' ? 'popup' : nil } 
   
   def index
     respond_to do |format|
@@ -48,7 +49,7 @@ class BookmarksController < ApplicationController
   end
 
   def new
-    @page_title = "Create a boomark"
+    @page_title = "Create a bookmark"
   end
 
   def metadata
@@ -64,7 +65,11 @@ class BookmarksController < ApplicationController
     begin
       @bookmark.save!
       flash[:notice] = "The bookmark has been saved!"
-      redirect_to :action => 'index'
+      if params[:popup]
+        render :template => 'shared/close'
+      else
+        redirect_to :action => 'index'
+      end
     rescue
       @page_title = "Create a bookmark"
       render :template => 'bookmarks/metadata'

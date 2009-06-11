@@ -1,5 +1,5 @@
 %ul
   %li
-    %a{ :href => "javascript:(function(){window.location.href='#{request.url.gsub!(url_for(), "")}/urls/save?url='+encodeURIComponent(window.location.href);})()", :title => 'Bookmarklet: Drag this to your bookmark bar' } URL Shortener
+    %a{ :href => "javascript:(function(){window.open('#{request.url.gsub!(url_for(), "")}/urls/save?url='+encodeURIComponent(window.location.href)+'&popup=1','shortener','width=600,height=600');})()", :title => 'Bookmarklet: Drag this to your bookmark bar' } URL Shortener
   %li
-    %a{ :href => "javascript:(function(){window.location.href='#{request.url.gsub!(url_for(), "")}/bookmarks/save?url='+encodeURIComponent(window.location.href);})()", :title => 'Bookmarklet: Drag this to your bookmark bar' } Add bookmark
+    %a{ :href => "javascript:(function(){window.open('#{request.url.gsub!(url_for(), "")}/bookmarks/save?url='+encodeURIComponent(window.location.href)+'&popup=1','bookmark','width=600,height=800,scrollbars=1');})()", :title => 'Bookmarklet: Drag this to your bookmark bar' } Add bookmark

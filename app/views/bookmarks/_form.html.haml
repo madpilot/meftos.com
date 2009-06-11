@@ -13,3 +13,6 @@
 %label
   %span.text_label Tags
   = text_field 'bookmark', 'tag_list'
+
+- if params[:popup]
+  = hidden_field_tag  ('popup', '1', :id => 'popup_check')
