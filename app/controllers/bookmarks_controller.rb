@@ -1,7 +1,7 @@
 class BookmarksController < ApplicationController
   include AuthenticatedSystem
   before_filter :login_required, :except => [ 'index' ]
-  layout proc { |c| c.params[:popup] == '1' ? 'popup' : nil } 
+  layout proc { |c| c.params[:popup] == '1' ? 'popup' : 'application' } 
   
   def index
     respond_to do |format|

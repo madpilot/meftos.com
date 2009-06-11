@@ -1,6 +1,6 @@
 class UrlsController < ApplicationController
   include AuthenticatedSystem
-  layout proc { |c| c.params[:popup] == '1' ? 'popup' : nil } 
+  layout proc { |c| c.params[:popup] == '1' ? 'popup' : 'application' } 
   
   def index
     redirect_to :action => 'new'
