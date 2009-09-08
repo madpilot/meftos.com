@@ -1,0 +1,37 @@
+#main-content
+  %h1
+    Search
+    - if @query
+      results for
+      = "&ldquo;" + h(@query) + "&rdquo;"
+
+  %form{ :method => 'get', :action => search_path }
+    %fieldset{ :class => 'search' }
+      %legend
+        Enter your search terms below
+
+      %label
+        %span{ :class => 'text_label' }
+          Search
+        = text_field_tag('q', @query)
+      %button{ :class => 'search', :type => 'submit' }
+        Search
+
+  - if @query
+    - if @results.empty?
+      %p
+        No search results where found. Please try a different search term
+    - else
+      %ol
+        - @results.each do |result|
+          %li
+            %h2
+              = link_to result.title, result.url
+            - if result.description
+              %div.description
+                =h result.description
+            %div.tags
+              - result.tags.each do |tag|
+                = link_to tag.name, { :tag => tag.name }
+
+  = will_paginate @results

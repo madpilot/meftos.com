@@ -12,6 +12,13 @@
     #container
       #global-navigation
         %ul
+          %li
+            - form_tag '/search', { :method => :get } do
+              %fieldset
+                %label
+                  %span{ :class => 'text_label' }
+                    Search
+                  = text_field_tag('q', '', { :id => 'quick_search' })
           %li 
             - if logged_in?
               = link_to 'Logout', logout_path

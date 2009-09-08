@@ -2,6 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 
 class Bookmark < ActiveRecord::Base
+  acts_as_indexed :fields => [ :title, :description ] 
   cattr_reader :per_page
   @@per_page = 100
 
@@ -25,12 +26,12 @@ class Bookmark < ActiveRecord::Base
       doc = Nokogiri::HTML(open(url))
     
       doc.xpath('//html/head/title').each do |t|
-        self.title = t.content
+        self.title = t.content.strip
       end
 
       doc.xpath('//html/head/meta').each do |m|
-        self.description = m['content'] if (m['name'] && m['name'].downcase == "description")
-        self.tag_list = m['content'] if (m['name'] && m['name'].downcase == "keywords")
+        self.description = m['content'].strip if (m['name'] && m['name'].downcase == "description")
+        self.tag_list = m['content'].strip if (m['name'] && m['name'].downcase == "keywords")
       end
     rescue; end
   end

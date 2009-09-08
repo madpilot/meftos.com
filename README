@@ -10,12 +10,12 @@ I've also bundled in delicious style bookmarking, just because I prefer being in
 
 1. Well, the URL shortener is pretty self explanatory
 2. The bookmarking tool has tags
-3. It will also try to parse the title, desscription and keyworks of the page
+3. It will also try to parse the title, description and keyworks of the page
 4. Built in bookmarkets
 
 == Getting Started
 
-1. It's a Rails 2.3.2 app, which requires haml, acts_as_taggable_on, nokogiri and will_paginate. These are in the environment.rb file so running rake gems:install should sort that out.
+1. It's a Rails 2.3.2 app, which requires haml, acts_as_taggable_on, nokogiri, acts_as_indexed and will_paginate. These are in the environment.rb file so running rake gems:install should sort that out.
 2. Run the following rake task: rake auth:gen:site_key
 3. I've disabled the user regsitration system, as this is intended for single user use. To create a user, fire up script/console and create a user manually. Something like this should sort you out (changing the default values)
 
