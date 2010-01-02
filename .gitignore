@@ -6,3 +6,5 @@ log/*
 config/initializers/site_keys.rb
 public/stylesheets/*.css
 public/stylesheets/.sass-cache/
+index
+tmp

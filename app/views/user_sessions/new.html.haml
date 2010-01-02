@@ -1,0 +1,23 @@
+- form_tag user_session_path do
+
+  %fieldset
+    %legend
+      Login
+    %label
+      %span.text_label
+        Username
+      = text_field 'user_session', 'login'
+
+    %label
+      %span.text_label
+        Password
+      = password_field 'user_session', 'password'
+
+    %fieldset.radio_group
+      %label
+        = check_box 'user_session', 'remember_me'
+        %span.text_label Keep me logged in
+
+  %fieldset.buttons
+    %button{ :type => 'submit' }
+      Login
